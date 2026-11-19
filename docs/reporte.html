@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Actividad 26 - Permisos en una aplicación móvil</title>
+<style>
+  :root { --azul:#0E5E8C; --azul-suave:#E4F0F7; --texto:#14202B; --gris:#5A6876; --borde:#D9DFE6; --ok:#13703F; --ok-f:#E2F3E9; --mal:#B3261E; --mal-f:#FBEAE9; --av:#7A4F00; --av-f:#FFF1D2; }
+  * { box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: var(--texto); font-size: 10.5pt; line-height: 1.5; margin: 0; }
+  h1 { font-size: 18pt; color: var(--azul); margin: 0 0 10px; padding-bottom: 6px; border-bottom: 2px solid var(--azul); break-after: avoid; }
+  h2 { font-size: 13pt; color: var(--azul); margin: 18px 0 6px; break-after: avoid; }
+  h3 { font-size: 11pt; margin: 14px 0 4px; break-after: avoid; }
+  p { margin: 6px 0; text-align: justify; }
+  .seccion { break-before: page; }
+  table { width: 100%; border-collapse: collapse; margin: 8px 0 12px; font-size: 9.5pt; break-inside: auto; }
+  th { background: var(--azul); color: #fff; text-align: left; padding: 6px 8px; font-weight: 600; }
+  td { border: 1px solid var(--borde); padding: 5px 8px; vertical-align: top; }
+  tr { break-inside: avoid; }
+  tr:nth-child(even) td { background: #F7F9FB; }
+  code { font-family: Consolas, monospace; font-size: 9pt; background: #EEF2F6; padding: 0 3px; border-radius: 3px; }
+  .fig { margin: 10px 0 14px; text-align: center; break-inside: avoid; }
+  .fig img { max-width: 100%; border: 1px solid var(--borde); border-radius: 6px; }
+  .fig figcaption, .cap { font-size: 8.5pt; color: var(--gris); margin-top: 4px; text-align: center; }
+  .tels { display: flex; gap: 10px; justify-content: center; margin: 10px 0 14px; break-inside: avoid; }
+  .tels figure { margin: 0; flex: 0 0 31%; text-align: center; }
+  .tels img { width: 100%; border: 1px solid var(--borde); border-radius: 10px; }
+  .tels.dos figure { flex: 0 0 34%; }
+  .nota { background: var(--azul-suave); border-left: 4px solid var(--azul); padding: 8px 12px; border-radius: 6px; margin: 10px 0; font-size: 9.5pt; break-inside: avoid; }
+  .ok { color: var(--ok); font-weight: 700; } .mal { color: var(--mal); font-weight: 700; } .av { color: var(--av); font-weight: 700; }
+  .badge { display: inline-block; border-radius: 999px; padding: 0 8px; font-size: 8.5pt; font-weight: 700; }
+  .b-ok { background: var(--ok-f); color: var(--ok); } .b-mal { background: var(--mal-f); color: var(--mal); } .b-av { background: var(--av-f); color: var(--av); }
+  .prueba { border: 1px solid var(--borde); border-radius: 8px; padding: 8px 12px 4px; margin: 12px 0; break-inside: avoid; }
+  .prueba h3 { margin-top: 2px; }
+  .meta { font-size: 9pt; color: var(--gris); }
+  ol li, ul li { margin: 3px 0; }
+  /* Portada */
+  .portada { height: 245mm; display: flex; flex-direction: column; justify-content: space-between; text-align: center; padding: 10mm 6mm 0; }
+  .portada .inst { font-size: 15pt; font-weight: 700; color: var(--azul); letter-spacing: .3px; }
+  .portada .sub { color: var(--gris); font-size: 11pt; }
+  .portada .titulo { font-size: 24pt; font-weight: 800; color: var(--texto); line-height: 1.25; margin: 0 0 10px; }
+  .portada .act { display: inline-block; background: var(--azul); color: #fff; border-radius: 999px; padding: 4px 16px; font-weight: 700; margin-bottom: 18px; }
+  .portada table { width: 78%; margin: 0 auto; font-size: 11pt; }
+  .portada td { padding: 8px 12px; text-align: left; }
+  .portada td:first-child { width: 36%; font-weight: 700; color: var(--azul); background: var(--azul-suave); }
+  .portada .proyecto { color: var(--gris); font-size: 11pt; margin-top: 6px; }
+  .indice { columns: 1; font-size: 10.5pt; }
+  .indice li { margin: 4px 0; }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ PORTADA -->
+<section class="portada">
+  <div>
+    <div class="inst">Universidad Tecnológica del Valle de Toluca</div>
+    <div class="sub">Reporte técnico</div>
+  </div>
+  <div>
+    <div class="act">Actividad 26</div>
+    <p class="titulo" style="text-align:center">Configuración y validación de permisos<br>en una aplicación móvil</p>
+    <div class="proyecto">Proyecto: <b>Reportes UTVT</b>, reportes de mantenimiento universitario<br>React Native + Expo SDK 58 · Android 15 (API 35)</div>
+  </div>
+  <table>
+    <tr><td>Alumno(a)</td><td>[Nombre completo]</td></tr>
+    <tr><td>Matrícula</td><td>[Matrícula]</td></tr>
+    <tr><td>Grupo</td><td>[Grupo]</td></tr>
+    <tr><td>Asignatura</td><td>[Nombre de la asignatura]</td></tr>
+    <tr><td>Docente</td><td>[Nombre del docente]</td></tr>
+    <tr><td>Fecha de entrega</td><td>18 de noviembre de 2026</td></tr>
+  </table>
+  <div class="sub">Lerma, Estado de México</div>
+</section>
+
+<!-- ============================================================ ÍNDICE -->
+<section class="seccion">
+  <h1>Contenido</h1>
+  <ol class="indice">
+    <li>Descripción del proyecto móvil utilizado</li>
+    <li>Identificación de funcionalidades y permisos necesarios</li>
+    <li>Evidencia de la configuración de permisos</li>
+    <li>Implementación de la solicitud de autorización</li>
+    <li>Evidencias de las pruebas de autorización y rechazo</li>
+    <li>Tabla de resultados</li>
+    <li>Tabla de permisos configurados</li>
+    <li>Conclusiones</li>
+    <li>Anexo: archivos modificados y cómo reproducir las pruebas</li>
+  </ol>
+</section>
+
+<!-- ============================================================ 1 -->
+<section class="seccion">
+  <h1>1. Descripción del proyecto móvil utilizado</h1>
+  <p><b>Reportes UTVT</b> es la aplicación móvil desarrollada en la actividad 22. La comunidad universitaria la usa para
+  reportar fallas de infraestructura y mantenimiento (iluminación, mobiliario, equipo de cómputo, internet e instalación
+  eléctrica). El estudiante o administrativo inicia sesión, elige la categoría y el aula, describe la falla y adjunta
+  evidencias. El responsable de mantenimiento consulta todos los reportes y cambia su estado (Pendiente, En revisión,
+  Atendido, Cerrado).</p>
+
+  <table>
+    <tr><th style="width:28%">Elemento</th><th>Detalle</th></tr>
+    <tr><td>Aplicación móvil</td><td>React Native 0.88 con Expo SDK 58 y Expo Router. Identificador Android/iOS: <code>mx.edu.utvt.reportes</code></td></tr>
+    <tr><td>Servicio (API)</td><td>Spring Boot 3.5 con JWT y base de datos H2 local. Los archivos se guardan en almacenamiento privado y se entregan con URL firmadas que caducan</td></tr>
+    <tr><td>Dispositivo de prueba</td><td>Emulador Android 15 (API 35, imagen x86_64, perfil Pixel 6) con el sistema en español (México)</td></tr>
+    <tr><td>Instalador probado</td><td>APK <i>release</i> generado con EAS Build (perfil <code>pruebas</code>). Es el mismo tipo de compilación que se distribuye, así que el manifiesto evaluado es el final</td></tr>
+  </table>
+
+  <h2>1.1 Cambios realizados en esta actividad</h2>
+  <p>La versión de la actividad 22 solo permitía tomar o elegir una fotografía. Para cubrir la problemática planteada
+  (capturar fotografías, obtener la ubicación y adjuntar evidencias antes de distribuir la app) se agregó lo siguiente:</p>
+  <ul>
+    <li><b>Ubicación GPS del reporte</b> con <code>expo-location</code>. Solo se lee en primer plano, cuando el usuario pulsa “Agregar mi ubicación actual”.</li>
+    <li><b>Nota de voz</b> de hasta 60 segundos con <code>expo-audio</code>, como evidencia adicional.</li>
+    <li><b>Gestión de permisos centralizada</b> en <code>src/lib/permisos.ts</code>: consultar el estado sin molestar al usuario, solicitarlo justo antes de usar el recurso y distinguir entre <i>denegado</i>, <i>bloqueado</i> y <i>aproximado</i>.</li>
+    <li><b>Pantalla “Permisos de la app”</b> que muestra el estado real de cada permiso y se actualiza al volver de Ajustes.</li>
+    <li><b>Aviso de rechazo</b> reutilizable. Si se niega un permiso, la app explica para qué sirve, ofrece reintentar o abrir Ajustes y deja enviar el reporte sin esa evidencia.</li>
+    <li><b>API</b>: el reporte guarda latitud, longitud y precisión, y hay un endpoint nuevo para la nota de voz que valida la firma del archivo (M4A) y su tamaño (2 MB máximo).</li>
+    <li><b>Configuración mínima de permisos</b> en <code>app.json</code>: se declaran solo los 4 permisos necesarios y se bloquean 12 que las bibliotecas agregarían por defecto.</li>
+  </ul>
+</section>
+
+<!-- ============================================================ 2 -->
+<section class="seccion">
+  <h1>2. Identificación de funcionalidades y permisos necesarios</h1>
+  <p>Se identificaron cuatro funcionalidades que acceden a recursos del dispositivo. Tres requieren un permiso peligroso
+  (<i>dangerous</i> en Android, con descripción de uso en iOS). La cuarta usa el selector de fotos del sistema y no
+  requiere ningún permiso.</p>
+
+  <table>
+    <tr><th style="width:24%">Funcionalidad</th><th style="width:30%">Permiso requerido</th><th>Justificación</th></tr>
+    <tr><td>Tomar fotografías</td><td>Cámara<br><code>CAMERA</code> · <code>NSCameraUsageDescription</code></td><td>Capturar desde la app la evidencia visual de la falla</td></tr>
+    <tr><td>Registrar ubicación</td><td>GPS / Ubicación en uso<br><code>ACCESS_FINE_LOCATION</code>, <code>ACCESS_COARSE_LOCATION</code> · <code>NSLocationWhenInUseUsageDescription</code></td><td>Obtener las coordenadas del lugar del reporte para que mantenimiento lo encuentre</td></tr>
+    <tr><td>Grabar notas de voz</td><td>Micrófono<br><code>RECORD_AUDIO</code> · <code>NSMicrophoneUsageDescription</code></td><td>Registrar audio como evidencia cuando es más fácil explicar la falla hablando</td></tr>
+    <tr><td>Adjuntar fotografías existentes</td><td><b>Ninguno</b>: selector de fotos del sistema (Android Photo Picker / PHPicker en iOS)</td><td>Seleccionar una evidencia ya almacenada. El sistema entrega solo la imagen elegida, sin acceso a toda la galería</td></tr>
+  </table>
+
+  <h2>2.1 Módulos de Expo utilizados</h2>
+  <table>
+    <tr><th style="width:24%">Funcionalidad</th><th style="width:22%">Módulo</th><th>Funciones de permisos utilizadas</th></tr>
+    <tr><td>Cámara y fotografías</td><td><code>expo-image-picker</code></td><td><code>getCameraPermissionsAsync()</code>, <code>requestCameraPermissionsAsync()</code> y <code>launchCameraAsync()</code>. Se usa la cámara del sistema, así que no hace falta <code>expo-camera</code></td></tr>
+    <tr><td>Selección de imágenes</td><td><code>expo-image-picker</code></td><td><code>launchImageLibraryAsync()</code> abre el selector del sistema y no solicita permisos</td></tr>
+    <tr><td>Ubicación</td><td><code>expo-location</code></td><td><code>getForegroundPermissionsAsync()</code>, <code>requestForegroundPermissionsAsync()</code>, <code>hasServicesEnabledAsync()</code> y <code>getCurrentPositionAsync()</code></td></tr>
+    <tr><td>Grabación de audio</td><td><code>expo-audio</code></td><td><code>getRecordingPermissionsAsync()</code>, <code>requestRecordingPermissionsAsync()</code> y <code>useAudioRecorder()</code></td></tr>
+    <tr><td>Abrir Ajustes</td><td><code>react-native</code></td><td><code>Linking.openSettings()</code>, para un permiso bloqueado</td></tr>
+  </table>
+
+  <h2>2.2 Permisos que se decidió NO solicitar</h2>
+  <p>Siguiendo el principio de mínimo privilegio, se revisaron los permisos que agregan las bibliotecas por defecto y se
+  bloquearon los que ninguna funcionalidad necesita:</p>
+  <table>
+    <tr><th style="width:38%">Permiso bloqueado</th><th>Motivo</th></tr>
+    <tr><td><code>READ_MEDIA_IMAGES</code>, <code>READ_MEDIA_VIDEO</code>, <code>READ_MEDIA_AUDIO</code>, <code>READ/WRITE_EXTERNAL_STORAGE</code></td><td>El selector de fotos del sistema no los necesita. <code>expo-image-picker</code> declaraba <code>READ/WRITE_EXTERNAL_STORAGE</code> (hasta API 32)</td></tr>
+    <tr><td><code>ACCESS_BACKGROUND_LOCATION</code>, <code>FOREGROUND_SERVICE_LOCATION</code></td><td>La ubicación solo se lee con la app abierta y a petición del usuario</td></tr>
+    <tr><td><code>FOREGROUND_SERVICE</code>, <code>FOREGROUND_SERVICE_MEDIA_PLAYBACK</code>, <code>FOREGROUND_SERVICE_MICROPHONE</code></td><td><code>expo-audio</code> los agrega para reproducir o grabar en segundo plano, algo que la app no hace</td></tr>
+    <tr><td><code>SYSTEM_ALERT_WINDOW</code>, <code>VIBRATE</code></td><td>Vienen en la plantilla de Expo y la app no los usa</td></tr>
+    <tr><td>iOS: <code>NSPhotoLibraryUsageDescription</code>, <code>NSLocationAlways…</code>, <code>NSMotionUsageDescription</code>, <code>NSFaceIDUsageDescription</code></td><td>No hay acceso a la fototeca completa, ubicación permanente, sensores de movimiento ni Face ID</td></tr>
+  </table>
+</section>
+
+<!-- ============================================================ 3 -->
+<section class="seccion">
+  <h1>3. Evidencia de la configuración de permisos</h1>
+  <h2>3.1 Android: permisos declarados y bloqueados (<code>app.json</code>)</h2>
+  <p>En Expo, la lista <code>android.permissions</code> sustituye la lista por defecto y <code>android.blockedPermissions</code>
+  agrega <code>tools:node="remove"</code> al manifiesto. Así se eliminan permisos aunque una biblioteca los declare en su propio <code>AndroidManifest.xml</code>.</p>
+  <figure class="fig"><img src="../evidencias/config/c01-app-json-android.png" style="width:88%"><figcaption>Figura 1. Permisos de Android en app.json. Las líneas resaltadas son los permisos peligrosos necesarios.</figcaption></figure>
+
+  <h2>3.2 iOS y plugins: descripciones de uso (<code>app.json</code>)</h2>
+  <p>Cada módulo tiene un <i>config plugin</i> que escribe en <code>Info.plist</code> el texto que iOS muestra en el
+  diálogo de autorización. Un valor <code>false</code> elimina la clave, y las opciones <code>is…Enabled: false</code>
+  evitan declarar ubicación en segundo plano o servicios en primer plano.</p>
+  <figure class="fig"><img src="../evidencias/config/c02-app-json-plugins.png" style="width:88%"><figcaption>Figura 2. Plugins de expo-image-picker, expo-location y expo-audio con las descripciones de uso en español.</figcaption></figure>
+</section>
+
+<section class="seccion">
+  <h2>3.3 Configuración resultante</h2>
+  <p>Para confirmar el efecto real de la configuración, se generó la configuración final con
+  <code>npx expo config --type introspect</code>, que aplica todos los plugins igual que en la compilación:</p>
+  <figure class="fig"><img src="../evidencias/config/t01-config-resuelta.png" style="width:88%"><figcaption>Figura 3. Manifiesto Android e Info.plist resultantes. Se conservan 4 permisos peligrosos y se eliminan 12.</figcaption></figure>
+  <p>Además se revisó el APK ya compilado con <code>aapt dump permissions</code>. Es la prueba definitiva de lo que
+  verá Android al instalar la app:</p>
+  <figure class="fig"><img src="../evidencias/config/t02-aapt-apk.png" style="width:88%"><figcaption>Figura 4. Permisos del APK de pruebas. No aparece ninguno de los permisos bloqueados.</figcaption></figure>
+  <div class="nota"><b>Hallazgo de la verificación:</b> el APK incluye permisos <i>normales</i> que agregan las bibliotecas
+  (<code>INTERNET</code>, <code>ACCESS_NETWORK_STATE</code>, <code>WAKE_LOCK</code>…). Se conceden al instalar y no muestran
+  diálogo. Dos de ellos, <code>USE_BIOMETRIC</code> y <code>USE_FINGERPRINT</code> (de <code>expo-secure-store</code>), no
+  los usa la app, así que también se agregaron a <code>blockedPermissions</code> para la versión de distribución.</div>
+
+  <h2>3.4 Perfil de pruebas</h2>
+  <p>La API local corre en la computadora (<code>http://10.0.2.2:8095</code> desde el emulador) y Android bloquea el
+  tráfico HTTP sin cifrar en compilaciones <i>release</i>. Por eso <code>app.config.js</code> permite HTTP solo cuando
+  el perfil <code>pruebas</code> de <code>eas.json</code> define <code>PERMITIR_HTTP_LOCAL=1</code>. El perfil
+  <code>produccion</code> no lo define y solo se comunica por HTTPS.</p>
+  <figure class="fig"><img src="../evidencias/config/c03-app-config-eas.png" style="width:80%"><figcaption>Figura 5. app.config.js: el ajuste de HTTP local solo aplica al APK de pruebas.</figcaption></figure>
+</section>
+
+<!-- ============================================================ 4 -->
+<section class="seccion">
+  <h1>4. Implementación de la solicitud de autorización</h1>
+  <p>Todas las pantallas usan el mismo módulo <code>permisos.ts</code>. Su regla principal es que <b>consultar no es lo
+  mismo que solicitar</b>. La pantalla de permisos y el formulario solo consultan el estado con
+  <code>get…PermissionsAsync()</code>, que nunca muestra un diálogo. El diálogo del sistema aparece únicamente con
+  <code>request…PermissionsAsync()</code>, dentro del botón de la función que necesita el recurso.</p>
+  <figure class="fig"><img src="../evidencias/config/c04-permisos-ts.png" style="width:88%"><figcaption>Figura 6. permisos.ts: la respuesta del sistema se traduce a concedido, aproximado, sin solicitar, denegado o bloqueado.</figcaption></figure>
+  <table>
+    <tr><th style="width:22%">Estado</th><th style="width:36%">Respuesta del sistema</th><th>Comportamiento de la app</th></tr>
+    <tr><td><span class="badge b-ok">Autorizado</span></td><td><code>granted: true</code></td><td>Usa el recurso</td></tr>
+    <tr><td><span class="badge b-av">Aproximado</span></td><td>Ubicación con <code>android.accuracy = 'coarse'</code> o <code>ios.accuracy = 'reduced'</code></td><td>Usa la ubicación y avisa que es aproximada (±1-3 km)</td></tr>
+    <tr><td><span class="badge" style="background:#ECEEF1;color:#4B5563">Sin solicitar</span></td><td><code>status: 'undetermined'</code></td><td>Espera a que el usuario pulse la función</td></tr>
+    <tr><td><span class="badge b-mal">Denegado</span></td><td><code>granted: false</code>, <code>canAskAgain: true</code></td><td>Explica el motivo y ofrece <b>Volver a intentar</b></td></tr>
+    <tr><td><span class="badge b-mal">Bloqueado</span></td><td><code>granted: false</code>, <code>canAskAgain: false</code></td><td>El sistema ya no muestra el diálogo, así que la app ofrece <b>Abrir ajustes</b></td></tr>
+  </table>
+</section>
+
+<section class="seccion">
+  <h2>4.1 Cámara y selector de fotos</h2>
+  <figure class="fig"><img src="../evidencias/config/c05-nuevo-camara.png" style="width:88%"><figcaption>Figura 7. El permiso de cámara se solicita al pulsar “Tomar foto”. La galería usa el selector del sistema y no solicita permiso.</figcaption></figure>
+  <h2>4.2 Ubicación</h2>
+  <figure class="fig"><img src="../evidencias/config/c06-ubicacion.png" style="width:88%"><figcaption>Figura 8. Se solicita la ubicación en primer plano, se verifica que el GPS esté encendido y se detecta si el permiso es aproximado.</figcaption></figure>
+</section>
+
+<section class="seccion">
+  <h2>4.3 Micrófono</h2>
+  <figure class="fig"><img src="../evidencias/config/c07-microfono.png" style="width:88%"><figcaption>Figura 9. El micrófono se solicita al pulsar “Grabar nota de voz” y se libera al detener la grabación.</figcaption></figure>
+  <h2>4.4 Comportamiento cuando se rechaza un permiso</h2>
+  <p>El componente <code>AvisoPermiso</code> aparece bajo la función afectada. Nunca bloquea el formulario: explica
+  para qué sirve el permiso, propone una alternativa (galería en lugar de cámara, edificio y aula en lugar de GPS,
+  descripción escrita en lugar de audio) y, si el permiso quedó bloqueado, lleva a Ajustes con
+  <code>Linking.openSettings()</code>.</p>
+  <figure class="fig"><img src="../evidencias/config/c08-aviso-rechazo.png" style="width:88%"><figcaption>Figura 10. AvisoPermiso: “Volver a intentar” si el sistema permite preguntar otra vez, “Abrir ajustes” si está bloqueado.</figcaption></figure>
+</section>
+
+
+<!-- ============================================================ 5 -->
+<section class="seccion">
+  <h1>5. Evidencias de las pruebas de autorización y rechazo</h1>
+  <p><b>Entorno:</b> APK <i>release</i> instalado en un emulador Android 15 (API 35) en español, conectado a la API local.
+  Las capturas se tomaron directamente de la pantalla del emulador con <code>adb exec-out screencap</code>. El estado real
+  de cada permiso se verificó con <code>adb shell dumpsys package mx.edu.utvt.reportes</code>, que muestra si el sistema lo
+  concedió (<code>granted</code>) y si el usuario lo bloqueó (<code>USER_FIXED</code>).</p>
+
+  <div class="prueba">
+    <h3>Prueba 1. La app no solicita permisos al iniciar</h3>
+    <p class="meta">Acción: instalar, abrir la app, iniciar sesión y abrir “Permisos”.</p>
+    <div class="tels"><figure><img src="../evidencias/capturas/01-login.png"><div class="cap">Inicio de sesión: sin diálogos</div></figure><figure><img src="../evidencias/capturas/02-mis-reportes.png"><div class="cap">Lista de reportes: sin diálogos</div></figure><figure><img src="../evidencias/capturas/03-permisos-sin-solicitar.png"><div class="cap">Los 3 permisos: “Sin solicitar”</div></figure></div>
+    <p>Resultado: <span class="ok">correcto</span>. Ningún diálogo apareció al abrir la app. <code>dumpsys</code> confirma
+    <code>granted=false</code> y sin marcas del usuario en CAMERA, ACCESS_FINE/COARSE_LOCATION y RECORD_AUDIO.</p>
+  </div>
+</section>
+
+<section class="seccion">
+  <div class="prueba">
+    <h3>Prueba 2. Rechazo del permiso de cámara</h3>
+    <p class="meta">Acción: Nuevo reporte → “Tomar foto” → “No permitir”.</p>
+    <div class="tels dos"><figure><img src="../evidencias/capturas/04-dialogo-camara.png"><div class="cap">La solicitud aparece al pulsar “Tomar foto”</div></figure><figure><img src="../evidencias/capturas/05-camara-denegada.png"><div class="cap">Aviso de permiso denegado con “Volver a intentar”</div></figure></div>
+    <p>Resultado: <span class="ok">correcto</span>. La app no se cierra ni abre la cámara. Muestra para qué se necesita
+    el permiso, ofrece reintentar y propone la galería como alternativa. El resto del formulario sigue disponible.</p>
+  </div>
+  <div class="prueba">
+    <h3>Prueba 3. Rechazo permanente (“no volver a preguntar”)</h3>
+    <p class="meta">Acción: “Volver a intentar” → segunda negativa → volver a pulsar “Tomar foto” → “Abrir ajustes”.</p>
+    <div class="tels"><figure><img src="../evidencias/capturas/06-dialogo-camara-2.png"><div class="cap">2ª solicitud: Android cambia a “No permitir” definitivo</div></figure><figure><img src="../evidencias/capturas/07-camara-bloqueada.png"><div class="cap">La app detecta canAskAgain=false: “Abrir ajustes”</div></figure><figure><img src="../evidencias/capturas/08-ajustes-app.png"><div class="cap">Linking.openSettings() abre la información de la app</div></figure></div>
+    <p>Resultado: <span class="ok">correcto</span>. Desde Android 11, dos rechazos equivalen a “no volver a preguntar”.
+    Al pulsar otra vez “Tomar foto”, el sistema respondió sin mostrar diálogo (se verificó que no apareció) y la app
+    cambió el aviso a <b>bloqueado</b> con acceso directo a Ajustes. <code>dumpsys</code>: <code>CAMERA: granted=false, flags=[USER_SET|USER_FIXED]</code>.</p>
+  </div>
+</section>
+
+<section class="seccion">
+  <div class="prueba">
+    <h3>Prueba 4. Adjuntar una foto existente sin ningún permiso</h3>
+    <p class="meta">Acción: con la cámara bloqueada, pulsar “Galería” y elegir una imagen.</p>
+    <div class="tels dos"><figure><img src="../evidencias/capturas/09-selector-fotos.png"><div class="cap">Selector del sistema: “solo puede acceder a las fotos que selecciones”</div></figure><figure><img src="../evidencias/capturas/10-foto-desde-selector.png"><div class="cap">La foto se adjunta y se valida (JPG, 296 KB)</div></figure></div>
+    <p>Resultado: <span class="ok">correcto</span>. No apareció ningún diálogo de permisos. El APK no declara
+    <code>READ_MEDIA_IMAGES</code> ni <code>READ_EXTERNAL_STORAGE</code>, así que la app no puede leer la galería completa,
+    solo la imagen que el usuario elige. Así funciona la funcionalidad aunque la cámara esté rechazada.</p>
+  </div>
+  <div class="prueba">
+    <h3>Prueba 5. Ubicación aproximada</h3>
+    <p class="meta">Acción: “Agregar mi ubicación actual” → elegir “Aproximada” → “Mientras la app está en uso”. Después, volver a pulsar el botón.</p>
+    <div class="tels"><figure><img src="../evidencias/capturas/11-dialogo-ubicacion.png"><div class="cap">Android 12+ permite elegir precisa o aproximada</div></figure><figure><img src="../evidencias/capturas/12-dialogo-ubicacion-aproximada.png"><div class="cap">El usuario elige “Aproximada”</div></figure><figure><img src="../evidencias/capturas/13-mejorar-a-precisa.png"><div class="cap">Al pedirla de nuevo, Android ofrece cambiar a precisa</div></figure></div>
+    <p>Resultado: <span class="ok">correcto en permisos</span>. Solo se concedió <code>ACCESS_COARSE_LOCATION</code>, la app lo
+    identificó como “Autorizado (aproximada)” y Android ofreció subir a precisa sin que la app tuviera que hacer nada especial.</p>
+    <p><span class="av">Hallazgo:</span> en este emulador no se obtuvieron coordenadas. La imagen de Android usada no tiene
+    Google Play services y <code>getCurrentPositionAsync()</code> depende de ellos. La app no falló: mostró “No fue posible
+    obtener la ubicación” y el reporte se podía enviar sin coordenadas. Como también pasaría en teléfonos sin servicios de
+    Google, se agregó un respaldo con el proveedor de Android (<code>expo-location/next</code>, ver figura 8).</p>
+  </div>
+</section>
+
+<section class="seccion">
+  <div class="prueba">
+    <h3>Prueba 6. Rechazo del permiso de micrófono</h3>
+    <p class="meta">Acción: “Grabar nota de voz” → “No permitir”.</p>
+    <div class="tels dos"><figure><img src="../evidencias/capturas/14-dialogo-microfono.png"><div class="cap">Solicitud al pulsar “Grabar nota de voz”</div></figure><figure><img src="../evidencias/capturas/15-microfono-denegado.png"><div class="cap">Aviso con alternativa: describir por escrito</div></figure></div>
+    <p>Resultado: <span class="ok">correcto</span>. No se inicia la grabación, se explica el motivo y se sugiere la descripción escrita del paso 3.</p>
+  </div>
+  <div class="prueba">
+    <h3>Prueba 7. El estado mostrado coincide con el del sistema</h3>
+    <p class="meta">Acción: abrir “Permisos” después de las pruebas 2 a 6 y compararlo con <code>dumpsys</code>.</p>
+    <div style="display:flex;gap:12px;align-items:flex-start;break-inside:avoid">
+      <figure style="margin:0;flex:0 0 31%;text-align:center"><img src="../evidencias/capturas/16-permisos-tras-rechazos.png" style="width:100%;border:1px solid var(--borde);border-radius:10px"><div class="cap">Bloqueado / Aproximada / Denegado</div></figure>
+      <div style="flex:1"><img src="../evidencias/config/t-dumpsys-2-tras-rechazos.png" style="width:100%;border-radius:6px"><div class="cap">dumpsys package: estado real en Android</div>
+      <table style="margin-top:8px"><tr><th>Permiso</th><th>dumpsys</th><th>App</th></tr>
+      <tr><td>CAMERA</td><td>granted=false, USER_FIXED</td><td><span class="badge b-mal">Bloqueado</span></td></tr>
+      <tr><td>COARSE_LOCATION</td><td>granted=true</td><td rowspan="2"><span class="badge b-av">Autorizado (aproximada)</span></td></tr>
+      <tr><td>FINE_LOCATION</td><td>granted=false, USER_FIXED</td></tr>
+      <tr><td>RECORD_AUDIO</td><td>granted=false, USER_SET</td><td><span class="badge b-mal">Denegado</span></td></tr></table></div>
+    </div>
+    <p>Resultado: <span class="ok">correcto</span>. La app distingue correctamente entre denegado (se puede volver a
+    preguntar) y bloqueado (solo desde Ajustes).</p>
+  </div>
+</section>
+<!--PRUEBAS-->
+
+</body>
+</html>

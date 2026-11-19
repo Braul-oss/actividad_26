@@ -1,0 +1,57 @@
+# Perfil produccion (sin PERMITIR_HTTP_LOCAL)
+AndroidManifest.xml  <uses-permission>:
+  INTERNET
+  CAMERA
+  ACCESS_COARSE_LOCATION
+  ACCESS_FINE_LOCATION
+  RECORD_AUDIO
+  MODIFY_AUDIO_SETTINGS
+  READ_EXTERNAL_STORAGE   -> tools:node="remove" (bloqueado)
+  WRITE_EXTERNAL_STORAGE   -> tools:node="remove" (bloqueado)
+  READ_MEDIA_IMAGES   -> tools:node="remove" (bloqueado)
+  READ_MEDIA_VIDEO   -> tools:node="remove" (bloqueado)
+  READ_MEDIA_AUDIO   -> tools:node="remove" (bloqueado)
+  ACCESS_BACKGROUND_LOCATION   -> tools:node="remove" (bloqueado)
+  FOREGROUND_SERVICE   -> tools:node="remove" (bloqueado)
+  FOREGROUND_SERVICE_LOCATION   -> tools:node="remove" (bloqueado)
+  FOREGROUND_SERVICE_MEDIA_PLAYBACK   -> tools:node="remove" (bloqueado)
+  FOREGROUND_SERVICE_MICROPHONE   -> tools:node="remove" (bloqueado)
+  SYSTEM_ALERT_WINDOW   -> tools:node="remove" (bloqueado)
+  VIBRATE   -> tools:node="remove" (bloqueado)
+  USE_BIOMETRIC   -> tools:node="remove" (bloqueado)
+  USE_FINGERPRINT   -> tools:node="remove" (bloqueado)
+  android:usesCleartextTraffic = (no definido: solo HTTPS)
+Info.plist (iOS):
+  NSMicrophoneUsageDescription = "Reportes UTVT usa el micrófono solo mientras grabas una nota de voz para describir la falla."
+  NSLocationWhenInUseUsageDescription = "Reportes UTVT usa tu ubicación solo al agregarla a un reporte, para que mantenimiento encuentre el lugar exacto de la falla."
+  NSLocationTemporaryUsageDescriptionDictionary = {"ExpoLocationFullAccuracy":"La ubicación precisa permite identificar el edificio y el aula de la falla."}
+  NSCameraUsageDescription = "Reportes UTVT usa la cámara para fotografiar la falla de mantenimiento que vas a reportar."
+
+# Perfil pruebas (PERMITIR_HTTP_LOCAL=1)
+AndroidManifest.xml  <uses-permission>:
+  INTERNET
+  CAMERA
+  ACCESS_COARSE_LOCATION
+  ACCESS_FINE_LOCATION
+  RECORD_AUDIO
+  MODIFY_AUDIO_SETTINGS
+  READ_EXTERNAL_STORAGE   -> tools:node="remove" (bloqueado)
+  WRITE_EXTERNAL_STORAGE   -> tools:node="remove" (bloqueado)
+  READ_MEDIA_IMAGES   -> tools:node="remove" (bloqueado)
+  READ_MEDIA_VIDEO   -> tools:node="remove" (bloqueado)
+  READ_MEDIA_AUDIO   -> tools:node="remove" (bloqueado)
+  ACCESS_BACKGROUND_LOCATION   -> tools:node="remove" (bloqueado)
+  FOREGROUND_SERVICE   -> tools:node="remove" (bloqueado)
+  FOREGROUND_SERVICE_LOCATION   -> tools:node="remove" (bloqueado)
+  FOREGROUND_SERVICE_MEDIA_PLAYBACK   -> tools:node="remove" (bloqueado)
+  FOREGROUND_SERVICE_MICROPHONE   -> tools:node="remove" (bloqueado)
+  SYSTEM_ALERT_WINDOW   -> tools:node="remove" (bloqueado)
+  VIBRATE   -> tools:node="remove" (bloqueado)
+  USE_BIOMETRIC   -> tools:node="remove" (bloqueado)
+  USE_FINGERPRINT   -> tools:node="remove" (bloqueado)
+  android:usesCleartextTraffic = true
+Info.plist (iOS):
+  NSMicrophoneUsageDescription = "Reportes UTVT usa el micrófono solo mientras grabas una nota de voz para describir la falla."
+  NSLocationWhenInUseUsageDescription = "Reportes UTVT usa tu ubicación solo al agregarla a un reporte, para que mantenimiento encuentre el lugar exacto de la falla."
+  NSLocationTemporaryUsageDescriptionDictionary = {"ExpoLocationFullAccuracy":"La ubicación precisa permite identificar el edificio y el aula de la falla."}
+  NSCameraUsageDescription = "Reportes UTVT usa la cámara para fotografiar la falla de mantenimiento que vas a reportar."

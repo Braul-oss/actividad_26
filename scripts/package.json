@@ -1,0 +1,12 @@
+{
+  "name": "actividad-26-scripts",
+  "private": true,
+  "description": "Automatización de pruebas en el emulador (adb) y generación de evidencias del reporte",
+  "scripts": {
+    "capturas": "node capturas-config.js",
+    "config": "node config-resuelta.js"
+  },
+  "dependencies": {
+    "playwright-core": "1.49.1"
+  }
+}

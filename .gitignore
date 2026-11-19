@@ -1,0 +1,62 @@
+# ------------------------------------------------------------------
+# Actividad 26 · Reportes UTVT (app Expo + API Spring Boot)
+# app-movil/ tiene además su propio .gitignore (plantilla de Expo).
+# ------------------------------------------------------------------
+
+# Dependencias
+node_modules/
+
+# ---------------- app-movil (Expo / React Native)
+app-movil/.expo/
+app-movil/dist/
+app-movil/web-build/
+app-movil/expo-env.d.ts
+# Carpetas nativas generadas por `expo prebuild` (se regeneran desde app.json)
+app-movil/android/
+app-movil/ios/
+# Variables de entorno locales (se versiona solo .env.example)
+.env
+.env.*
+!.env.example
+# Llaves de firma y credenciales de las tiendas
+*.jks
+*.keystore
+*.p8
+*.p12
+*.key
+*.pem
+*.mobileprovision
+credentials.json
+google-services.json
+GoogleService-Info.plist
+
+# ---------------- api-reportes (Spring Boot / Maven)
+api-reportes/target/
+# Base de datos H2 local y archivos subidos durante las pruebas (fotos y notas de voz)
+api-reportes/datos/
+api-reportes/almacenamiento/
+*.mv.db
+*.trace.db
+
+# ---------------- Entregables pesados y datos locales de pruebas
+# El APK (~86 MB) se publica como Release de GitHub, no dentro del repositorio
+*.apk
+*.aab
+# Bitácora del backend (incluye la contraseña temporal que genera Spring en desarrollo)
+*.log
+# Metadatos del build de EAS (cuenta y URL del artefacto)
+evidencias/eas-build.json
+
+# ---------------- Scripts del reporte
+scripts/__pycache__/
+*.pyc
+
+# ---------------- Editores y sistema
+.vscode/
+.idea/
+*.iml
+.DS_Store
+Thumbs.db
+desktop.ini
+~$*
+*.tmp

@@ -1,0 +1,14 @@
+$ aapt dump permissions entrega/reportes-utvt-pruebas.apk
+package: name='mx.edu.utvt.reportes' versionCode='3' versionName='1.1.0'
+package: mx.edu.utvt.reportes
+uses-permission: name='android.permission.ACCESS_COARSE_LOCATION'
+uses-permission: name='android.permission.ACCESS_FINE_LOCATION'
+uses-permission: name='android.permission.CAMERA'
+uses-permission: name='android.permission.INTERNET'
+uses-permission: name='android.permission.MODIFY_AUDIO_SETTINGS'
+uses-permission: name='android.permission.RECORD_AUDIO'
+uses-permission: name='android.permission.ACCESS_WIFI_STATE'
+uses-permission: name='android.permission.ACCESS_NETWORK_STATE'
+uses-permission: name='android.permission.WAKE_LOCK'
+permission: mx.edu.utvt.reportes.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+uses-permission: name='mx.edu.utvt.reportes.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION'
